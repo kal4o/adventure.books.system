@@ -1,9 +1,28 @@
 package com.advanced.academy.adventure.books.system.model;
 
+import com.advanced.academy.adventure.books.system.model.adventure.Adventure;
+import com.advanced.academy.adventure.books.system.model.adventure.Hero;
+import com.advanced.academy.adventure.books.system.model.adventure.Step;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "adventures_progresses")
 public class AdventureProgress {
+    @Id
+    @Column(name = "id")
     private Integer id;
+
+    @ManyToOne
+    @JoinColumn (name = "hero_id")
     private Hero hero;
+
+    @ManyToOne
+    @JoinColumn(name = "adventure_id")
     private Adventure adventure;
+
+    @ManyToOne
+    @JoinColumn(name = "current_step_id")
     private Step currentStep;
 
     public Integer getId() {
