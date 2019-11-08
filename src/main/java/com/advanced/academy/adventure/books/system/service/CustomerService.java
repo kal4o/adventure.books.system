@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
 
@@ -19,38 +21,35 @@ public class CustomerService {
 
     public void createOrUpdateCustomer(Customer customer) {
        if(null== customer.getId()) {
-           //to do create
-        return ;
+           createCustomer(customer);
+        return;
        }
+       updateCustomer(customer);
         //to do update
         //return customer.getUserName();
     }
 
     public Customer getCustomer(Integer customerId) {
-        return null;
-    }
 
-
-    private void createOrUpdateCustomer(Customer customer) {
-        if(null==customer.getId()) {
-            validateAndCreateCustomer(customer);
-            return;
+        Optional<Customer> customer = customerRepository.findById(customerId);
+        if (!customer.isPresent()) {
+            throw new RuntimeException("Customer not found!");
         }
+        return customer.get();
     }
-    private void validateAndUpdateCustomer(Customer customer) {
-        validateCustomer();
-        //customerRepository.save(customer);  //towa pi6e v bazata!
-    }
-    private void validateAndCreateCustomer(Customer customer) {
-        validateCustomer();
-        //customerRepository.save(customer);  //towa pi6e v bazata
-    }
-    private void validateCustomer() {
 
+
+    private void updateCustomer(Customer customer) {
+
+        customerRepository.save(customer);  //towa pi6e v bazata!
+    }
+    private void createCustomer(Customer customer) {
+        customerRepository.save(customer);  //towa pi6e v bazata
     }
 
     public void deleteCustomer(Integer customerId) {
-
+        // customerRepository.deleteById(customerId);  //nikoga ne triem!!
+        customerRepository.deactivateCustomer(customerId);
     }
 }
 

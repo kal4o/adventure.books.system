@@ -6,7 +6,7 @@ import com.advanced.academy.adventure.books.system.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("customer")
+@RequestMapping("api/customer")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -31,5 +31,6 @@ public class CustomerController {
     public void deleteCustomer(@PathVariable("customerId") Integer customerId) {
         customerService.deleteCustomer(customerId);
     }
+
 
 }
