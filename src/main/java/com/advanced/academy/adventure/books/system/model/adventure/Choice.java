@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Choice {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -14,11 +15,11 @@ public class Choice {
     private String description;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "step_given_in")
     private Step stepGivenIn;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "result_in_step_id")
     private Step resultInStep;
 
