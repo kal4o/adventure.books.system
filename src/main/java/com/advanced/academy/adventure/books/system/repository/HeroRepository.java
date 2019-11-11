@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface HeroRepository extends CrudRepository<Hero, Integer> {
 
     @Query("Select h FROM Hero h WHERE customer.id = :customerId")
-    Optional<List<Hero>> getHeroesByCustomerId(@Param("cistomerId") Integer customerId);
+    Optional<List<Hero>> getHeroesByCustomerId(@Param("customerId") Integer customerId);
 }
 
 

@@ -34,7 +34,7 @@ public class TagService {
         return tag;
     }
 
-    public List<Tag> getTagByAdventure(Integer adventureId){
+    public List<Tag> getAllTagsByAdventureId(Integer adventureId){
         List<Tag> tags = new ArrayList<>();
         Adventure adventure = tagRepository.getReference(Adventure.class, adventureId);
         //todo introduce method that finds by adventure id

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 
 @Repository
-public class GetReferenceImpl {
+public class GetReferenceImpl implements GetReference {
 
     private final EntityManager entityManager;
 
@@ -15,7 +15,7 @@ public class GetReferenceImpl {
         this.entityManager = entityManager;
     }
 
-    public  <T> T getReference(Class<T> tClass, Integer id) {
+    public <T> T getReference(Class<T> tClass, Integer id) {
         return entityManager.getReference(tClass, id);
     }
 
