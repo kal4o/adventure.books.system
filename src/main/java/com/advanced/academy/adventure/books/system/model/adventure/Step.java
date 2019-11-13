@@ -16,7 +16,7 @@ public class Step {
 
     @Column(name = "end_gameType")
     @Enumerated(EnumType.STRING)
-    private EndGameType endGameType;
+    private EndGameType endGameType = EndGameType.NONE;
 
     @Column(name = "ends_game")
     private boolean endGame = false;

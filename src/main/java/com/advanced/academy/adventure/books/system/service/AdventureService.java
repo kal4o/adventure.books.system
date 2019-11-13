@@ -21,8 +21,8 @@ public class AdventureService {
     }
 
 
-    public void createOrUpdate(Adventure adventure) {
-        adventureRepository.save(adventure);
+    public Adventure createOrUpdate(Adventure adventure) {
+        return adventureRepository.save(adventure);
     }
 
     public List<Adventure> getAll() {

@@ -22,7 +22,6 @@ public class Customer {
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-
     @NotNull
     private UserType type;
 
